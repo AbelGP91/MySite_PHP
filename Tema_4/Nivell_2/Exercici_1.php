@@ -26,7 +26,7 @@ function lanzarDado() {
     
 }
 
-function shapeName($valor){
+function shapeName($valor,$contador){
 
     switch ($valor) {
 
@@ -56,7 +56,7 @@ function shapeName($valor){
        
     }
     
-    echo "En la última tirada ha sortit: " . $cara;
+    echo "En la tirada " . $contador . " ha sortit: " . $cara;
     echo "<br>";
     return $cara;
 
@@ -64,8 +64,24 @@ function shapeName($valor){
 
 function getTotalThrows ($resultats) {
 
-    echo "El resultat de totes les tirades és el següent:";
-    print_r(array_count_values($resultats));          
+    echo "El resultat de totes les tirades és el següent: <br><br>";
+    
+    $valors=(array_count_values($resultats));  
+    
+    foreach ($valors as $key => $value) {
+        
+        if ($value==1){
+
+        echo "Ha sortit >> " . $key . " << una vegada. <br>";
+
+        }
+
+        else {
+
+            echo "Ha sortit >> " . $key . " << un total de " . $value . " vegades. <br>";
+        }
+
+    }
 
 }
 
@@ -78,7 +94,7 @@ for ($i=0; $i < 5; $i++) {
     $tirada = lanzarDado();
     // echo "<br>";
     // var_dump($tirada);
-    $cara=shapeName($tirada); 
+    $cara=shapeName($tirada,$i+1); 
     $resultats[] = $cara;
 
 }
