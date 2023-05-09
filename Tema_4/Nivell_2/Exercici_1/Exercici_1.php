@@ -1,23 +1,9 @@
 
 <?php
 
-$dado1 = new PokerDice;
-$dado2 = new PokerDice;
-$dado3 = new PokerDice;
-$dado4 = new PokerDice;
-$dado5 = new PokerDice;
+include "PokerDice.php";
 
-class PokerDice {
-
-    var $cara = "";
-        
-    function setCara($cara){
-
-        $this->cara = $cara;
-
-    }
-    
-}
+/*
 
 function lanzarDado() {    
         
@@ -110,5 +96,7 @@ echo "<br>";
 getTotalThrows($resultats);
 
 echo "</pre>";
+
+*/
 
 ?>
