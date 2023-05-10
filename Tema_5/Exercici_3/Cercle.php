@@ -20,6 +20,10 @@ class Cercle implements Shape {
 
     }
 
+    public function description(){        
+        
+    }
+
 }
 
 

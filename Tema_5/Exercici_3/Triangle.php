@@ -20,6 +20,10 @@ class Triangle implements Shape {
 
     }
 
+    public function description(){        
+        
+    }
+
 }
 
 

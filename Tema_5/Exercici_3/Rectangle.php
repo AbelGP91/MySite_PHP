@@ -20,6 +20,10 @@ class Rectangle implements Shape {
 
     }   
 
+    public function description(){      
+        
+    }
+
 }
 
 
