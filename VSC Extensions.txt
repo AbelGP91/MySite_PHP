@@ -1,0 +1,6 @@
+
+1 - Auto Close Tag
+2 - Auto Rename Tag
+3 - IntelliCode
+4 - Material Icon Theme
+5 - Path Intellisense
