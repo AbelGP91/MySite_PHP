@@ -1,3 +1,6 @@
+
+-- TIENDA --
+
 01 · SELECT nombre FROM producto
 02 · SELECT nombre, precio FROM producto
 03 · SELECT * FROM producto
@@ -40,4 +43,14 @@
 40 · SELECT * FROM tienda.producto WHERE producto.precio >= (SELECT max(producto.precio) FROM tienda.producto, tienda.fabricante WHERE fabricante.codigo =  producto.codigo_fabricante AND fabricante.nombre = "Lenovo")
 41 · SELECT producto.nombre, producto.precio FROM tienda.producto WHERE producto.codigo_fabricante = (SELECT fabricante.codigo FROM tienda.fabricante WHERE fabricante.nombre = "Asus") AND precio > (SELECT AVG(producto.precio) FROM tienda.producto WHERE producto.codigo_fabricante = (SELECT fabricante.codigo FROM tienda.fabricante WHERE fabricante.nombre = "Asus")) 
 
+-- UNIVERSIDAD --
 
+01 · SELECT apellido1, apellido2, nombre FROM universidad.persona WHERE tipo = "alumno" ORDER BY apellido1, apellido2, nombre
+02 · SELECT concat(nombre, " ", apellido1, " ", apellido2) AS "Nombre Completo" FROM universidad.persona WHERE telefono IS NULL AND tipo = "alumno" ORDER BY apellido1, apellido2, nombre
+03 · SELECT concat(nombre, " ", apellido1, " ", apellido2) AS "Nombre Completo", fecha_nacimiento FROM universidad.persona WHERE tipo = "alumno" AND fecha_nacimiento LIKE "1999%" ORDER BY apellido1, apellido2, nombre
+04 · SELECT concat(nombre, " ", apellido1, " ", apellido2) AS "Nombre Completo", fecha_nacimiento FROM universidad.persona WHERE tipo = "profesor" AND telefono IS NULL AND nif LIKE "%K" ORDER BY apellido1, apellido2, nombre
+05 · SELECT asignatura.nombre,grado.nombre FROM universidad.asignatura INNER JOIN universidad.grado ON grado.id = asignatura.id_grado WHERE asignatura.id_grado = 7 AND asignatura.curso = 3 AND asignatura.cuatrimestre = 1
+06 · SELECT persona.apellido1, persona.apellido2, persona.nombre, departamento.nombre FROM universidad.persona INNER JOIN universidad.profesor ON profesor.id_profesor = persona.id INNER JOIN universidad.departamento ON departamento.id = profesor.id_departamento ORDER BY persona.apellido1, persona.nombre
+07 · SELECT persona.nif,asignatura.nombre, curso_escolar.anyo_inicio, curso_escolar.anyo_fin FROM universidad.persona INNER JOIN universidad.alumno_se_matricula_asignatura  ON alumno_se_matricula_asignatura.id_alumno = persona.id INNER JOIN universidad.asignatura ON asignatura.id = alumno_se_matricula_asignatura.id_asignatura INNER JOIN universidad.curso_escolar ON curso_escolar.id = alumno_se_matricula_asignatura.id_curso_escolar WHERE nif LIKE "26902806M"
+08 · SELECT departamento.nombre FROM universidad.persona INNER JOIN universidad.profesor ON profesor.id_profesor = persona.id INNER JOIN universidad.departamento ON departamento.id = profesor.id_departamento INNER JOIN universidad.asignatura ON asignatura.id_profesor = persona.id INNER JOIN universidad.grado ON grado.id = asignatura.id_grado WHERE grado.nombre LIKE "%Grado en Ingeniería Informática (Plan 2015)%" GROUP BY departamento.nombre
+09 · SELECT persona.nombre, persona.apellido1, persona.apellido2 FROM universidad.persona INNER JOIN universidad.alumno_se_matricula_asignatura ON alumno_se_matricula_asignatura.id_alumno = persona.id INNER JOIN universidad.curso_escolar ON curso_escolar.id = alumno_se_matricula_asignatura.id_curso_escolar WHERE curso_escolar.anyo_inicio LIKE "%2018%" GROUP BY nombre
